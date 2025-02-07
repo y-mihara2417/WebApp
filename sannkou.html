@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真検索</title>
+</head>
+<body>
+    <header id="header">
+        <p class="title">U-DAN</p>
+        <p class="sub_title">Free Photo</p>
+    </header>
+    <main>
+        <div id="comment">
+            <h2>理想の一枚を探そう</h2>
+        </div>
+        <!-- 検索フォーム -->
+        <section class="search">
+            <form id="search" action="" method="GET">
+                <input type="text" id="searchInput" name="query" placeholder="検索ワードを入力" value="{{ query }}">
+                <button type="submit">🔍</button>
+            </form>
+            <div id="searchResults">
+                {% for photo in results %}
+                <div>
+                    <img src="{{ photo.url }}" alt="{{ photo.title }}">
+                    <p>{{ photo.title }}</p>
+                    <p>{{ photo.description }}</p>
+                </div>
+                {% empty %}
+                <p>検索結果が見つかりませんでした。</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>© 2024 U-DAN</p>
+    </footer>
+</body>
+</html>
